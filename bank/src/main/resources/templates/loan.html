@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        nav select {
+            padding: 5px;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Account Details</a>
+        <a href="#">Transfer Money</a>
+        <a href="#">History</a>
+        <a href="#">Loan</a>
+        <a href="#">Card</a>
+        <select>
+            <option value="personal">Personal Loan</option>
+            <option value="home">Home Loan</option>
+            <option value="car">Car Loan</option>
+        </select>
+    </nav>
+
+    <section>
+        <h1>Loan Application</h1>
+        <label for="loanType">Loan Type:</label>
+        <select id="loanType">
+            <option value="personal">Personal Loan</option>
+            <option value="home">Home Loan</option>
+            <option value="car">Car Loan</option>
+        </select>
+
+        <label for="loanAmount">Loan Amount:</label>
+        <input type="number" id="loanAmount" placeholder="Enter loan amount">
+
+        <label for="loanTenure">Loan Tenure (months):</label>
+        <input type="number" id="loanTenure" placeholder="Enter loan tenure">
+
+        <button onclick="calculateInterest()">Calculate Interest</button>
+
+        <div class="result-box" id="interestResult">
+            <!-- Interest rate result will be displayed here -->
+        </div>
+
+        <button onclick="applyForLoan()">Apply for Loan</button>
+    </section>
+
+    <script>
+        function calculateInterest() {
+            // Get values from input fields
+            var loanType = document.getElementById('loanType').value;
+            var loanAmount = document.getElementById('loanAmount').value;
+            var loanTenure = document.getElementById('loanTenure').value;
+
+            // Perform interest rate calculation (dummy calculation for illustration)
+            var interestRate = calculateDummyInterest(loanType, loanAmount, loanTenure);
+
+            // Display the result in the result box
+            var resultBox = document.getElementById('interestResult');
+            resultBox.innerHTML = '<strong>Interest Rate:</strong> ' + interestRate.toFixed(2) + '%';
+        }
+
+        function calculateDummyInterest(loanType, loanAmount, loanTenure) {
+            // Dummy interest rate calculation based on loan type, amount, and tenure
+            // This is a placeholder function; you should replace it with your actual interest rate calculation logic
+            // The following is just an example, and you should consult with financial experts for accurate calculations
+            var baseInterestRate = 5; // Base interest rate
+
+            // Adjust interest rate based on loan type, amount, and tenure
+            switch (loanType) {
+                case 'personal':
+                    baseInterestRate += 1; // Personal loan may have a higher interest rate
+                    break;
+                case 'home':
+                    baseInterestRate -= 1; // Home loan may have a lower interest rate
+                    break;
+                // Add more cases for other loan types if needed
+            }
+
+            // Adjust interest rate based on loan amount and tenure
+            baseInterestRate += loanAmount / 10000; // Increase interest rate for higher loan amounts
+            baseInterestRate += loanTenure / 12; // Increase interest rate for longer tenure
+
+            return baseInterestRate;
+        }
+
+        function applyForLoan() {
+            // Implement the logic to submit the loan application
+            // This is a placeholder function; you should replace it with your actual application submission logic
+            alert('Loan application submitted successfully!');
+        }
+    </script>
+</body>
+</html>
